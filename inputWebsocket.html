@@ -5,9 +5,12 @@
     <script type="text/javascript" src="/MyHomePage/jquery-2.0.3.min.js"></script>
 </head>
 <body>
+<div id="upload">
 <h2>File Upload</h2>
 Select file
-<input type="file" id="filename"/>
+<input type="file" id="filename"  accept="text/plain"/>
+
+</div>
 <br>
 <input type="button" value="Connect" onclick="connectChatServer()"/>
 <br>
@@ -79,7 +82,23 @@ Select file
 
     }
 
+    function handleFileSelect(evt) {
+        var total = evt.target.files[0].type;
+        if(total !== 'text/plain') {
+            alert("Arquivo nao e permitido");
+            clearFileInputField('upload');
+        }
+    }
+    function clearFileInputField(tagId) {
 
+        document.getElementById(tagId).innerHTML =
+
+                document.getElementById(tagId).innerHTML;
+
+    }
+
+    var file2 = document.getElementById('filename');
+    file2.addEventListener('change',  handleFileSelect, false);
 </script>
 </body>
 </html>
