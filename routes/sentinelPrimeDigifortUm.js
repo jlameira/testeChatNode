@@ -33,6 +33,7 @@ const options = [{
     AuthUser: 'admin',
     AuthPass:'abc123@',
     method: 'GET',
+    forever: true,
     agent: keepaliveAgent
   }
 ];
@@ -55,11 +56,11 @@ async.map(options, function (options,callback) {
         } else {
           json = JSON.stringify(result);
           // json.host = host1;
-          console.log(JSON.stringify(result));
+          console.log(json);
         }
       });
 
-      if(json !== 'undefined') {
+      if(json != 'undefined') {
         var naoleu = JSON.parse(json);
         naoleu.servidor = options.host;
         naoleu.AuthUser = options.AuthUser;
